@@ -9,42 +9,39 @@ param host object
 
 var rgName = 'rg-${name}'
 
+module networkModule 'modules/network.bicep' = {
+  name: 'module-network-${name}'
+  scope: resourceGroup(network.vnetRgName)
+  params: {
+    name: name
+    vnetName: network.vnetName
+    subnetAddressPrefix: network.subnetAddressPrefix
+  }
+}
+
 resource rg 'Microsoft.Resources/resourceGroups@2025-04-01' = {
   name: rgName
   location: location
-}
-
-module networkModule 'modules/network.bicep' = {
-  name: 'module-network-${name}'
-  scope: rg
-  params: {
-    name: name
-    location: location
-    vnetAddressPrefix: network.vnetAddressPrefix
-    subnetAddressPrefix: network.subnetAddressPrefix
-  }
+  dependsOn: [
+    networkModule
+  ]
 }
 
 module hostsModule 'modules/host.bicep' = {
   name: 'module-host-${name}-${host.name}'
   scope: resourceGroup(rgName)
+  dependsOn: [
+    rg
+  ]
   params: {
     name: name
     instance: host.name
     location: location
-    subnetId: networkModule.outputs.subnetId
+    subnetId: networkModule.outputs.snetId
     privateIp: host.ip
-    publicIpId: networkModule.outputs.publicIpId
     vmSize: host.vmSize
     diskSize: host.diskSize
     image: host.image
-    allowedPorts: [
-      {
-        number: '22'
-        priority: 1000
-        protocol: 'Tcp'
-      }
-    ]
     userName: credentials.userName
     password: credentials.ssh
   }

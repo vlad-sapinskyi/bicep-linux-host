@@ -2,8 +2,8 @@
 param(
 )
 process {
-    # Set subscription ID for 'VLDS Sandbox'
-    $subscriptionId = '10923ef3-e036-4918-88a7-e2853ca7b5b4'
+    # Set subscription ID for 'SimCity Test'
+    $subscriptionId = 'd283ae58-8e29-46e8-a99b-1fc767265552'
 
     # Set Azure context
     $account = az account show | ConvertFrom-Json
