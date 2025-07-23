@@ -11,7 +11,7 @@ param network = {
 param credentials = {
   userName: name
   password: readEnvironmentVariable('LINUX_HOST_PASSWORD', '')
-  ssh: loadTextContent('../ssh/ssh-${name}.pub')
+  ssh: loadTextContent('../ssh/${name}.pub')
 }
 
 param host = {
