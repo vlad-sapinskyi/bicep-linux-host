@@ -15,7 +15,7 @@ module networkModule 'modules/network.bicep' = {
   params: {
     name: name
     vnetName: network.vnetName
-    subnetAddressPrefix: network.subnetAddressPrefix
+    subnetName: network.subnetName
   }
 }
 

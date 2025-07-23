@@ -4,9 +4,9 @@ param name = 'linux-host'
 param location = 'swedencentral'
 
 param network = {
-  vnetName: 'vnet-spoke-simcity-test-sdc-001'
-  vnetRgName: 'rg-spoke-simcity-test-sdc-001'
-  subnetAddressPrefix: '10.179.249.0/29'
+  vnetName: 'vnet-spoke-simcity-prod-sdc-001'
+  vnetRgName: 'rg-spoke-simcity-prod-sdc-001'
+  subnetName: 'subnet-simcity-prod-sdc'
 }
 
 param credentials = {
@@ -17,7 +17,7 @@ param credentials = {
 
 param host = {
   name: '001'
-  ip: '10.179.249.4'
+  ip: '10.178.195.33'
   vmSize: 'Standard_B2as_v2'
   diskSize: 40
   image: {

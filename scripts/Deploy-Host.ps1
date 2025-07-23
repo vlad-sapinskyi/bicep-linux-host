@@ -2,8 +2,8 @@
 param(
 )
 process {
-    # Set subscription ID for 'SimCity Test'
-    $subscriptionId = 'd283ae58-8e29-46e8-a99b-1fc767265552'
+    # Set subscription ID for 'SimCity Prod'
+    $subscriptionId = '013a9e9f-ddfd-4fe4-9104-e27fe60ca546'
 
     # Set Azure context
     $account = az account show | ConvertFrom-Json

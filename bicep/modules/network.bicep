@@ -1,18 +1,13 @@
 param name string
 
 param vnetName string
-param subnetAddressPrefix string
-
-var subnetName = 'snet-${name}'
+param subnetName string
 
 resource vnet 'Microsoft.Network/virtualNetworks@2024-07-01' existing = {
   name: vnetName
 
-  resource subnet 'subnets' = {
+  resource subnet 'subnets' existing = {
     name: subnetName
-    properties: {
-      addressPrefix: subnetAddressPrefix
-    }
   }
 }
 
