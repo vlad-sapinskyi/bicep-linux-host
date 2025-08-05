@@ -41,7 +41,12 @@ module hostsModule 'modules/host.bicep' = {
     allowedPorts: [
       {
         number: '22'
-        priority: 1000
+        priority: 1100
+        protocol: 'Tcp'
+      }
+      {
+        number: '3389'
+        priority: 1200
         protocol: 'Tcp'
       }
     ]

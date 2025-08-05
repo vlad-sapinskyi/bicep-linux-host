@@ -17,7 +17,7 @@ param credentials = {
 param host = {
   name: '001'
   ip: '172.16.0.11'
-  vmSize: 'Standard_B2as_v2'
+  vmSize: 'Standard_B4als_v2'
   diskSize: 40
   image: {
     publisher: 'canonical'
